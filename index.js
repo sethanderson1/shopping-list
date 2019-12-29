@@ -18,7 +18,7 @@ $(function() {
           </li>`
     );
   });
-
+// test
   $(".shopping-list").on("click", ".shopping-item-toggle", function(event) {
     const itemText = $(event.currentTarget)
       .closest("li")
