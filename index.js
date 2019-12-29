@@ -1,11 +1,9 @@
 $(function() {
   $("#js-shopping-list-form").submit(function(event) {
     event.preventDefault();
-    console.log("clicked submit");
     const newItem = $(event.currentTarget)
       .find($('input[name="shopping-list-entry"]'))
       .val();
-    console.log(newItem);
     $(".shopping-list").append(
       `<li>
             <span class="shopping-item">${newItem}</span>
@@ -21,27 +19,16 @@ $(function() {
     );
   });
 
-  
-  
-  
-  $(".shopping-list").on('click','span:contains("check")',function(event) {
-    const clickCheckTarget = $('span:contains("check")');
-    console.log(clickCheckTarget);
-    // event.preventDefault();
-    console.log("clicked check");
-    console.log($(event.currentTarget));
-
+  $(".shopping-list").on("click", ".shopping-item-toggle", function(event) {
     const itemText = $(event.currentTarget)
       .closest("li")
-      .find('.shopping-item')
-      .toggleClass('shopping-item__checked');
-      console.log(itemText);
-
+      .find(".shopping-item")
+      .toggleClass("shopping-item__checked");
   });
 
-
-  $(".shopping-list").on('click','span:contains("delete")',function(event) {
-    $(event.currentTarget).closest("li").remove();
-
+  $(".shopping-list").on("click", ".shopping-item-delete", function(event) {
+    $(event.currentTarget)
+      .closest("li")
+      .remove();
   });
 });
